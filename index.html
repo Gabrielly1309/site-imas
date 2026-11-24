@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ímãs & Afeto - Fotos que viram memórias</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#faf5ff',
+                            100: '#f3e8ff',
+                            200: '#e9d5ff',
+                            300: '#d8b4fe',
+                            400: '#c084fc',
+                            500: '#a855f7',
+                            600: '#9333ea',
+                            700: '#7e22ce',
+                            accent: '#f472b6'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Quicksand', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilo Personalizado -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-purple-50/40 text-gray-800 min-h-screen flex flex-col antialiased">
+
+    <!-- Faixa Topo -->
+    <div class="bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 text-white text-xs md:text-sm py-2 text-center font-medium shadow-sm">
+        <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Transforme suas fotos em memórias na geladeira! | Produção rápida & Desconto no PIX.
+    </div>
+
+    <!-- Cabeçalho / Navbar -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-purple-100 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2">
+                <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 text-xl font-bold border border-purple-200">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-tight text-purple-950 block leading-tight">Ímãs & Afeto</span>
+                    <span class="text-[10px] text-purple-500 font-semibold uppercase tracking-wider block">Fotos que viram memórias</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 font-semibold text-sm text-gray-600">
+                <a href="#como-funciona" class="hover:text-purple-600 transition-colors">Como Pedir</a>
+                <a href="#kits" class="hover:text-purple-600 transition-colors">Escolher Kits</a>
+                <a href="#sobre" class="hover:text-purple-600 transition-colors">Nosso Ateliê</a>
+            </nav>
+
+            <button onclick="toggleCart()" class="relative bg-purple-100 hover:bg-purple-200 text-purple-700 p-2.5 rounded-full transition-all flex items-center justify-center">
+                <i class="fa-solid fa-bag-shopping text-lg"></i>
+                <span id="cart-badge" class="hidden absolute -top-1 -right-1 bg-pink-500 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Banner Principal -->
+    <section class="relative py-12 md:py-16 bg-gradient-to-b from-purple-100/50 via-pink-50/30 to-purple-50/40 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="space-y-6 text-center md:text-left">
+                <span class="inline-block bg-purple-200/80 text-purple-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                    <i class="fa-solid fa-shield-halved mr-1"></i> Formato Quadrado Rígido com Película Brilhante
+                </span>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+                    Chega de fotos esquecidas na galeria do celular.
+                </h1>
+                <p class="text-base sm:text-lg text-gray-600 font-medium">
+                    Eternize viagens, momentos em família, pets e frases em ímãs tipo botton rígidos de altíssima durabilidade.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#kits" class="inline-flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white font-bold px-8 py-3.5 rounded-2xl shadow-lg shadow-purple-500/20 transition-all hover:scale-[1.02]">
+                        <i class="fa-solid fa-images mr-2"></i> Ver Kits & Enviar Fotos
+                    </a>
+                </div>
+            </div>
+
+            <!-- Demonstrativo Visual -->
+            <div class="relative flex justify-center">
+                <div class="bg-white p-4 rounded-3xl shadow-xl border border-purple-100 max-w-sm w-full space-y-3">
+                    <div class="bg-purple-50 p-3 rounded-2xl border border-purple-100 text-center">
+                        <span class="text-xs font-bold text-purple-700 uppercase tracking-wider"><i class="fa-solid fa-star mr-1"></i> Exemplo do seu kit na geladeira</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2.5">
+                        <div class="aspect-square bg-purple-200 rounded-xl overflow-hidden shadow-sm border-2 border-white">
+                            <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=300&auto=format&fit=crop&q=80" class="w-full h-full object-cover" alt="Família">
+                        </div>
+                        <div class="aspect-square bg-purple-200 rounded-xl overflow-hidden shadow-sm border-2 border-white">
+                            <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=300&auto=format&fit=crop&q=80" class="w-full h-full object-cover" alt="Pet">
+                        </div>
+                        <div class="aspect-square bg-purple-200 rounded-xl overflow-hidden shadow-sm border-2 border-white">
+                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=300&auto=format&fit=crop&q=80" class="w-full h-full object-cover" alt="Viagem">
+                        </div>
+                        <div class="aspect-square bg-purple-200 rounded-xl overflow-hidden shadow-sm border-2 border-white">
+                            <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=300&auto=format&fit=crop&q=80" class="w-full h-full object-cover" alt="Casal">
+                        </div>
+                        <div class="aspect-square bg-purple-200 rounded-xl overflow-hidden shadow-sm border-2 border-white">
+                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300&auto=format&fit=crop&q=80" class="w-full h-full object-cover" alt="Amigos">
+                        </div>
+                        <div class="aspect-square bg-purple-200 rounded-xl overflow-hidden shadow-sm border-2 border-white">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80" class="w-full h-full object-cover" alt="Retrato">
+                        </div>
+                    </div>
+                    <div class="text-center pt-2">
+                        <span class="text-xs text-purple-600 font-semibold">Base de metal + película transparente protetora</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Passos em 4 etapas -->
+    <section id="como-funciona" class="py-12 bg-white border-y border-purple-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-xl mx-auto mb-10">
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Como Pedir Seus Ímãs</h2>
+                <p class="text-gray-500 font-medium text-sm mt-1">Envie suas fotos diretamente por aqui no site!</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-purple-50/60 p-6 rounded-2xl border border-purple-100 text-center space-y-3">
+                    <div class="w-10 h-10 bg-purple-600 text-white font-bold rounded-full flex items-center justify-center mx-auto shadow-md">1</div>
+                    <h3 class="font-bold text-gray-800">Escolha o seu Kit</h3>
+                    <p class="text-xs text-gray-600">Selecione a quantidade de ímãs (6, 12, 18 ou 24 unidades).</p>
+                </div>
+                <div class="bg-purple-50/60 p-6 rounded-2xl border border-purple-100 text-center space-y-3">
+                    <div class="w-10 h-10 bg-purple-600 text-white font-bold rounded-full flex items-center justify-center mx-auto shadow-md">2</div>
+                    <h3 class="font-bold text-gray-800">Anexe suas Fotos</h3>
+                    <p class="text-xs text-gray-600">Carregue as imagens e coloque legendas para cada ímã.</p>
+                </div>
+                <div class="bg-purple-50/60 p-6 rounded-2xl border border-purple-100 text-center space-y-3">
+                    <div class="w-10 h-10 bg-purple-600 text-white font-bold rounded-full flex items-center justify-center mx-auto shadow-md">3</div>
+                    <h3 class="font-bold text-gray-800">Frete & Pagamento</h3>
+                    <p class="text-xs text-gray-600">Calcule seu frete e pague via Pix (5% OFF), Cartão ou Boleto.</p>
+                </div>
+                <div class="bg-purple-50/60 p-6 rounded-2xl border border-purple-100 text-center space-y-3">
+                    <div class="w-10 h-10 bg-purple-600 text-white font-bold rounded-full flex items-center justify-center mx-auto shadow-md">4</div>
+                    <h3 class="font-bold text-gray-800">Produção Rápida</h3>
+                    <p class="text-xs text-gray-600">Prensamos e preparamos seu pedido em até 24/48h úteis!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo de Kits -->
+    <section id="kits" class="py-14 max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-purple-600 font-bold text-xs uppercase tracking-wider">Escolha a melhor opção</span>
+            <h2 class="text-3xl font-bold text-gray-900 mt-1">Kits de Ímãs Personalizados</h2>
+            <p class="text-gray-600 font-medium text-sm mt-2">Quanto maior o kit, menor o valor por unidade!</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="products-grid">
+            <!-- Renderizado dinamicamente via JS (app.js) -->
+        </div>
+    </section>
+
+    <!-- Seção Sobre o Ateliê -->
+    <section id="sobre" class="py-12 bg-white border-t border-purple-100">
+        <div class="max-w-4xl mx-auto px-4 text-center space-y-4">
+            <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto text-2xl">
+                <i class="fa-solid fa-hands-holding-heart"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-purple-950">Qualidade e Acabamento Perfeito</h2>
+            <p class="text-gray-600 text-sm leading-relaxed max-w-2xl mx-auto">
+                Nossos ímãs são produzidos com estrutura metálica reforçada, impressão fotográfica de alta definição e película protetora transparente de alto brilho que protege a foto contra desbotamento e umidade. Fixação firme na sua geladeira!
+            </p>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="bg-purple-950 text-white border-t border-purple-900 pt-12 pb-6">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+            <div class="space-y-3">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-purple-800 flex items-center justify-center text-purple-300 text-base font-bold">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <span class="text-lg font-bold text-white">Ímãs & Afeto</span>
+                </div>
+                <p class="text-xs text-purple-200 leading-relaxed">
+                    Transformando memórias do seu celular em lindos ímãs metálicos com brilho para decorar sua casa.
+                </p>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-bold text-sm text-purple-300 tracking-wider uppercase">Navegação</h4>
+                <ul class="space-y-2 text-xs text-purple-200">
+                    <li><a href="#como-funciona" class="hover:text-white transition-colors">Como Pedir</a></li>
+                    <li><a href="#kits" class="hover:text-white transition-colors">Ver Kits de Ímãs</a></li>
+                    <li><a href="#sobre" class="hover:text-white transition-colors">Sobre Nosso Ateliê</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-bold text-sm text-purple-300 tracking-wider uppercase">Atendimento</h4>
+                <div class="space-y-2 text-xs text-purple-200">
+                    <p class="flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i> WhatsApp: (11) 99999-9999
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <i class="fa-regular fa-envelope text-purple-400 text-sm"></i> contato@imaseafeto.com.br
+                    </p>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-bold text-sm text-purple-300 tracking-wider uppercase">Pagamento Seguro</h4>
+                <div class="flex flex-wrap gap-2 text-2xl text-purple-300">
+                    <i class="fa-brands fa-pix text-emerald-400" title="Pix"></i>
+                    <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+                    <i class="fa-brands fa-cc-visa" title="Visa"></i>
+                    <i class="fa-solid fa-barcode" title="Boleto"></i>
+                </div>
+                <div class="pt-2 text-[11px] text-purple-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-shield-halved text-emerald-400"></i> Proteção SSL Seguro
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-6 border-t border-purple-900/60 text-center text-xs text-purple-300">
+            <p>&copy; 2026 Ímãs & Afeto Ateliê. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modais mantidos do código anterior -->
+    <div id="customize-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="p-5 border-b border-purple-100 bg-purple-50 flex items-center justify-between">
+                <div>
+                    <h3 class="font-bold text-lg text-purple-950" id="modal-kit-title">Personalizar Kit</h3>
+                    <p class="text-xs text-purple-600 font-medium" id="modal-kit-subtitle">Carregue suas fotos para este kit</p>
+                </div>
+                <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-white text-gray-500 flex items-center justify-center hover:bg-purple-100">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-6 overflow-y-auto custom-scrollbar flex-1 space-y-6">
+                <div class="bg-purple-100/60 p-4 rounded-2xl text-xs text-purple-800 flex items-start gap-3">
+                    <i class="fa-solid fa-circle-info text-base text-purple-600 mt-0.5"></i>
+                    <div>
+                        <strong>Dica importante:</strong> Escolha fotos com boa iluminação. As imagens serão enquadradas no formato quadrado.
+                    </div>
+                </div>
+                <div id="photos-upload-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+            </div>
+
+            <div class="p-4 border-t border-purple-100 bg-white flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div class="text-xs text-gray-500 font-medium">
+                    Fotos selecionadas: <span id="uploaded-count" class="font-bold text-purple-600">0</span> / <span id="required-count">0</span>
+                </div>
+                <div class="flex gap-2 w-full sm:w-auto">
+                    <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl border border-gray-200 text-gray-600 font-semibold text-xs flex-1 sm:flex-none">Cancelar</button>
+                    <button id="btn-confirm-photos" onclick="confirmAndAddToCart()" disabled class="px-6 py-2.5 rounded-xl bg-purple-600 opacity-50 cursor-not-allowed text-white font-bold text-xs shadow-md flex-1 sm:flex-none">
+                        Adicionar ao Carrinho <i class="fa-solid fa-cart-plus ml-1.5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carrinho Lateral -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 pointer-events-none">
+        <div id="cart-backdrop" onclick="toggleCart()" class="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+        <aside id="cart-panel" class="absolute top-0 right-0 w-full max-w-md h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col pointer-events-auto">
+            <div class="p-5 border-b border-purple-100 flex items-center justify-between bg-purple-50">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-bag-shopping text-purple-600"></i>
+                    <h3 class="font-bold text-lg text-purple-950">Seu Carrinho</h3>
+                </div>
+                <button onclick="toggleCart()" class="text-gray-400 hover:text-gray-600 p-2">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div id="cart-items" class="flex-1 overflow-y-auto p-5 space-y-4 custom-scrollbar"></div>
+
+            <div class="p-5 border-t border-purple-100 bg-gray-50/50 space-y-4">
+                <div class="space-y-2">
+                    <label class="block text-xs font-bold text-gray-700">Calcular Frete por CEP:</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="cep-input" placeholder="00000-000" maxlength="9" class="w-full text-xs px-3 py-2 border border-purple-200 rounded-xl outline-none">
+                        <button onclick="calculateShipping()" class="bg-purple-600 text-white font-bold px-4 py-2 rounded-xl text-xs">Calcular</button>
+                    </div>
+                    <div id="shipping-options" class="hidden space-y-1.5 pt-2"></div>
+                </div>
+
+                <div class="space-y-1.5 text-xs text-gray-600 pt-2 border-t border-purple-100">
+                    <div class="flex justify-between"><span>Subtotal:</span><span id="cart-subtotal" class="font-semibold text-gray-800">R$ 0,00</span></div>
+                    <div class="flex justify-between"><span>Frete:</span><span id="cart-shipping" class="font-semibold text-gray-800">R$ 0,00</span></div>
+                    <div class="flex justify-between text-base font-bold text-purple-950 pt-2 border-t border-purple-200">
+                        <span>Total:</span><span id="cart-total" class="text-purple-600">R$ 0,00</span>
+                    </div>
+                </div>
+
+                <button onclick="openCheckout()" id="btn-checkout" disabled class="w-full bg-purple-600 opacity-50 cursor-not-allowed text-white font-bold py-3.5 rounded-2xl shadow-lg text-sm flex items-center justify-center gap-2">
+                    Finalizar Pedido <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modal Checkout -->
+    <div id="checkout-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-xl rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="p-5 bg-purple-600 text-white flex items-center justify-between">
+                <h3 class="font-bold text-lg"><i class="fa-solid fa-lock mr-2"></i> Checkout Seguro</h3>
+                <button onclick="closeCheckout()" class="text-purple-200 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+
+            <div class="p-6 overflow-y-auto custom-scrollbar space-y-6">
+                <div class="space-y-3">
+                    <h4 class="font-bold text-sm text-purple-950">1. Dados para Entrega</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <input type="text" id="cust-name" placeholder="Nome Completo *" class="w-full p-3 border border-purple-200 rounded-xl outline-none">
+                        <input type="tel" id="cust-phone" placeholder="WhatsApp / Telefone *" class="w-full p-3 border border-purple-200 rounded-xl outline-none">
+                        <input type="text" id="cust-address" placeholder="Endereço e Número *" class="sm:col-span-2 w-full p-3 border border-purple-200 rounded-xl outline-none">
+                        <input type="text" id="cust-city" placeholder="Cidade / Estado *" class="w-full p-3 border border-purple-200 rounded-xl outline-none">
+                        <input type="text" id="cust-cep-checkout" placeholder="CEP *" class="w-full p-3 border border-purple-200 rounded-xl outline-none">
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="font-bold text-sm text-purple-950">2. Opção de Pagamento</h4>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button type="button" onclick="selectPayment('pix')" id="pay-btn-pix" class="p-3 border-2 border-purple-600 bg-purple-50 rounded-xl text-center space-y-1">
+                            <i class="fa-brands fa-pix text-emerald-600 text-xl block"></i>
+                            <span class="text-[11px] font-bold block">PIX (5% OFF)</span>
+                        </button>
+                        <button type="button" onclick="selectPayment('card')" id="pay-btn-card" class="p-3 border border-gray-200 rounded-xl text-center space-y-1">
+                            <i class="fa-solid fa-credit-card text-purple-600 text-xl block"></i>
+                            <span class="text-[11px] font-bold block">Cartão</span>
+                        </button>
+                        <button type="button" onclick="selectPayment('boleto')" id="pay-btn-boleto" class="p-3 border border-gray-200 rounded-xl text-center space-y-1">
+                            <i class="fa-solid fa-barcode text-gray-600 text-xl block"></i>
+                            <span class="text-[11px] font-bold block">Boleto</span>
+                        </button>
+                    </div>
+
+                    <div id="pay-content-pix" class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl text-center space-y-3">
+                        <span class="inline-block bg-emerald-200 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">DESCONTO APLICADO</span>
+                        <div class="bg-white p-3 inline-block rounded-xl border border-emerald-200">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=00020126580014BR.GOV.BCB.PIX0136imas-e-afeto-exemplo-pix" class="w-32 h-32 mx-auto" alt="QR Code Pix">
+                        </div>
+                        <div class="flex gap-2">
+                            <input type="text" readonly value="00020126580014BR.GOV.BCB.PIX0136imas-e-afeto-exemplo-pix" class="w-full text-[10px] p-2 bg-white border border-emerald-200 rounded-lg text-gray-500">
+                            <button onclick="alert('Chave Pix copiada!')" class="bg-emerald-600 text-white text-xs font-bold px-3 rounded-lg">Copiar</button>
+                        </div>
+                    </div>
+
+                    <div id="pay-content-card" class="hidden bg-gray-50 border border-gray-200 p-4 rounded-2xl space-y-3 text-xs">
+                        <input type="text" placeholder="Número do Cartão" class="w-full p-2.5 border rounded-lg">
+                        <div class="grid grid-cols-2 gap-2">
+                            <input type="text" placeholder="MM/AA" class="w-full p-2.5 border rounded-lg">
+                            <input type="text" placeholder="CVV" class="w-full p-2.5 border rounded-lg">
+                        </div>
+                        <select id="card-installments" class="w-full p-2.5 border rounded-lg font-medium text-gray-700"></select>
+                    </div>
+
+                    <div id="pay-content-boleto" class="hidden bg-gray-50 border border-gray-200 p-4 rounded-2xl text-center space-y-2 text-xs">
+                        <i class="fa-solid fa-file-invoice-dollar text-3xl text-gray-400"></i>
+                        <p class="text-gray-600">Boleto gerado após a confirmação. Compensação em até 2 dias úteis.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 border-t border-purple-100 bg-gray-50 flex items-center justify-between">
+                <div>
+                    <span class="text-xs text-gray-500 block">Total a pagar:</span>
+                    <span id="checkout-final-total" class="text-xl font-extrabold text-purple-700">R$ 0,00</span>
+                </div>
+                <button onclick="finishOrder()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg text-xs flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Confirmar & Enviar Pedido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
